@@ -9,13 +9,16 @@ var fuel_consumption = 2
 
 # Player's Resources
 var food = 200
-var fuel = 1000
+var fuel = 10
 var spare_part = 50
 var first_aid = 3
 var morphine = 2
 var torpedo = 2
 var harpoon = 100
 var gold = 120
+
+var ship_state = "sail"
+
 
 var random_index = null # Blank random number slot for event
 
@@ -35,8 +38,11 @@ func _process(delta):
 	
 	# Sliding Background
 	var bg_pos = self.get_node("bg_set_1").get_pos()
-	bg_pos.x -= 100 * delta
-	get_node("bg_set_1").set_pos(bg_pos)
+	if ship_state == "sail":
+		bg_pos.x -= 100 * delta
+		get_node("bg_set_1").set_pos(bg_pos)
+	elif ship_state == "stop":
+		get_node("bg_set_1").set_pos(bg_pos)
 	
 	# Wrappinng Background around the scene
 	var screen_width = self.get_viewport_rect().size.width
@@ -47,15 +53,27 @@ func _travel():
 	print("traveling")
 	get_node("ui/Panel/distance_left_title/ProgressBar").set_value(distance - distance_left)
 
+func _ship_stop():
+	get_node("player_ship/AnimationPlayer").play("stop")
+	ship_state = "stop"
+	
 
+func _out_of_fuel():
+	print("You are out of fuel")
+	get_tree().set_pause(true)
+	get_node("random_event/Label").set_text("You are out of fuel")
+	get_node("random_event/RichTextLabel").add_text("With out fuel you and your crew can't go anywhere \nAll you can do is wait or scavange")
+	get_node("random_event").show()
+	self._ship_stop()
+	
+	
+	
 func _on_Timer_timeout():
 	if fuel > 0 :
 		self._travel()
 	else:
-		get_tree().set_pause(true)
-		get_node("random_event/Label").set_text("You are out of fuel")
-		get_node("random_event/RichTextLabel").add_text("With out fuel you and your crew can't go anywhere")
-		get_node("random_event").show()
+		get_node("Timer").stop()
+		self._out_of_fuel()
 		
 		
 	# Test random event

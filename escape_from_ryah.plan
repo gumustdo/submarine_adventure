@@ -1,0 +1,14 @@
+Let's review what I've done first.
++ Already have an idle animation for travelling scene.
++ Have a random generator (Very basic one) working at configurable percentage.
++ Out of Fuel Notification * But still not prevent the player's ship from keep advancing
++ Minor animation on background.
++ Background wrapping/scrolling
+
+What to do next
+
+- Make a dummy crew starving when out of food.
+- Make a dummy crew able to die from starvation.
+- Loading hub/landmark scene when player's ship reach the destination
+- Make the ship stop when out of fuel + force player to go scavenge.
+- Look-up how to load, switch between scene and still have a consistant variables between scenes
