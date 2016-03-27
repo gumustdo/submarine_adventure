@@ -8,8 +8,8 @@ var food_consumption = 10
 var fuel_consumption = 2
 
 # Player's Resources
-var food = 200
-var fuel = 10
+export var food = 200
+export var fuel = 10
 var spare_part = 50
 var first_aid = 3
 var morphine = 2
@@ -18,6 +18,8 @@ var harpoon = 100
 var gold = 120
 
 var ship_state = "sail"
+
+var food_ran_out = false
 
 
 var random_index = null # Blank random number slot for event
@@ -66,7 +68,21 @@ func _out_of_fuel():
 	get_node("random_event").show()
 	self._ship_stop()
 	
+func _out_of_food():
+	if food_ran_out:	
+		print("You are out of food")
+		get_node("random_event/Label").set_text("You are out of Food")
+		get_node("random_event/RichTextLabel").clear()
+		get_node("random_event/RichTextLabel").add_text("With out fuel you and your crew can't go anywhere \nAll you can do is wait or scavange")
+		get_node("random_event").show()
+		food_ran_out = false
+		get_tree().set_pause(true)
+	else:
+		pass	
 	
+	# Damage
+	get_node("ui/Panel/crew_1").health -= get_node("ui/Panel/crew_1").starvation_damage
+	print(get_node("ui/Panel/crew_1").health)
 	
 func _on_Timer_timeout():
 	if fuel > 0 :
@@ -74,7 +90,6 @@ func _on_Timer_timeout():
 	else:
 		get_node("Timer").stop()
 		self._out_of_fuel()
-		
 		
 	# Test random event
 	var random_index = randi() % 100
@@ -95,11 +110,21 @@ func _on_Timer_timeout():
 	fuel_left.set_text(str(fuel))
 	food_left.set_text(str(food))
 	
+	# Stat check
 	distance_left -= distance_per_turn
 	fuel -= fuel_consumption
-	food -= food_consumption
 	
-
+	if food < 0 :
+		food = 0
+	
+	if food > 0 :
+		food -= food_consumption
+		food_ran_out = false
+	elif food == 0 and food_ran_out == false:
+		food_ran_out = true
+		self._out_of_food()
+		
+	print("food run out? " + str(food_ran_out))
 
 func _on_Button_pressed():
 	# Closing text msg will unpause the game

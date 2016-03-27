@@ -1,13 +1,24 @@
 
 extends Control
 
-export var health = 100
+export var health_max = 100
+var health = null
 export var insanity = 0
 export var sick = false
 
+export var starvation_damage = 2
+
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	
+	health = health_max
+	
+	self.get_node("health").set_max(health_max)
+	self.get_node("health").set_value(health)
+	
 
 
+
+func _on_Timer_timeout():
+	self.get_node("health").set_value(health)
+	
+	pass # replace with function body
