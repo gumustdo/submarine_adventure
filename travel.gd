@@ -56,7 +56,7 @@ func _travel():
 	get_node("ui/Panel/distance_left_title/ProgressBar").set_value(distance - distance_left)
 
 func _ship_stop():
-	get_node("player_ship/AnimationPlayer").play("stop")
+	get_node("player_container/player_ship/AnimationPlayer").play("stop")
 	ship_state = "stop"
 	
 
