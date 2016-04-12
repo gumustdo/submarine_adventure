@@ -4,7 +4,7 @@ extends Control
 export var health_max = 100
 var health = null
 export var insanity = 0
-export var sick = false
+export var condition = "normal"
 
 export var starvation_damage = 2
 
