@@ -21,6 +21,8 @@ var random_index = null # Blank random number slot for event
 func _ready():
 	resource = get_node("/root/global").resource
 	
+	get_node("ui/Panel/crew_1/name").set_text(get_node("/root/global").player.name)
+	
 	#test
 	print("player have " + str(resource.food) + " oz of food left")
 	
