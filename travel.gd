@@ -8,31 +8,29 @@ var food_consumption = 10
 var fuel_consumption = 2
 
 # Player's Resources
-export var food = 200
-export var fuel = 10
-var spare_part = 50
-var first_aid = 3
-var morphine = 2
-var torpedo = 2
-var harpoon = 100
-var gold = 120
+var resource
 
+# flags
 var ship_state = "sail"
-
 var food_ran_out = false
 
-
+# Randomizer
 var random_index = null # Blank random number slot for event
 
 
 func _ready():
+	resource = get_node("/root/global").resource
+	
+	#test
+	print("player have " + str(resource.food) + " oz of food left")
+	
 	distance_left = distance
 	
 	self.set_process(true)
 	# Assign values to UI text
 	get_node("ui/Panel/distance_left_title/distance_left_value").set_text(str(distance))
-	get_node("ui/Panel/fuel_title/fuel_left").set_text(str(fuel))
-	get_node("ui/Panel/food_title/food_left").set_text(str(food))
+	get_node("ui/Panel/fuel_title/fuel_left").set_text(str(resource.fuel))
+	get_node("ui/Panel/food_title/food_left").set_text(str(resource.food))
 	
 	get_node("ui/Panel/distance_left_title/ProgressBar").set_max(distance)
 	
@@ -83,9 +81,18 @@ func _out_of_food():
 	# Damage
 	get_node("ui/Panel/crew_1").health -= get_node("ui/Panel/crew_1").starvation_damage
 	print(get_node("ui/Panel/crew_1").health)
+
+func distance_check():
+	# Distance deduction and displaying result
+	var distance_update = get_node("ui/Panel/distance_left_title/distance_left_value")
+	distance_update.set_text(str(distance_left))
+	distance_left -= distance_per_turn
+	
+	if distance_left == 0:
+		get_node("/root/global").goto_scene("res://landmark_splash.scn")
 	
 func _on_Timer_timeout():
-	if fuel > 0 :
+	if resource.fuel > 0 :
 		self._travel()
 	else:
 		get_node("Timer").stop()
@@ -99,28 +106,23 @@ func _on_Timer_timeout():
 		get_tree().set_pause(true)
 		get_node("random_event").show()
 	
-	# Distance deduction and displaying result
-	var distance_update = get_node("ui/Panel/distance_left_title/distance_left_value")
+	distance_check()
 	var fuel_left = get_node("ui/Panel/fuel_title/fuel_left")
 	var food_left = get_node("ui/Panel/food_title/food_left")
 	
-	distance_update.set_text(str(distance_left))
-	# get_node("ui/Panel/distance_left_title/ProgressBar").
-	
-	fuel_left.set_text(str(fuel))
-	food_left.set_text(str(food))
+	fuel_left.set_text(str(resource.fuel))
+	food_left.set_text(str(resource.food))
 	
 	# Stat check
-	distance_left -= distance_per_turn
-	fuel -= fuel_consumption
+	resource.fuel -= fuel_consumption
 	
-	if food < 0 :
-		food = 0
+	if resource.food < 0 :
+		resource.food = 0
 	
-	if food > 0 :
-		food -= food_consumption
+	if resource.food > 0 :
+		resource.food -= food_consumption
 		food_ran_out = false
-	elif food == 0 and food_ran_out == false:
+	elif resource.food == 0 and food_ran_out == false:
 		food_ran_out = true
 		self._out_of_food()
 		
