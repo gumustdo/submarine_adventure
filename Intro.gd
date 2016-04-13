@@ -20,7 +20,7 @@ func _ready():
 	input_player_name = get_node("dialogue_bg/input_player_name")
 	
 	#Hide the accept button if player haven't input the name yet
-	button_accept.hide()
+	# button_accept.hide()
 	button_start.hide()
 
 	set_process(true)
@@ -38,16 +38,24 @@ func _process(delta):
 
 func _on_button_accept_pressed():
 	get_node("intro_scene_anim").play("dialog_fadeout_anim")
+
+	
 	
 
 func _on_button_start_pressed():
-	get_node("/root/global").goto_scene("res://travel.scn")
+	get_node("intro_scene_anim").play("scene_fade_out_anim")
 
-func _on_dialog_fadeout_anim_finished():
-	get_node("/root/global").player.name = input_player_name.get_text()
-	dialog_box.clear()
-	dialog_box.add_text("Thank you, " + get_node("/root/global").player.name + " Now let's begin talking about your story shall we?")
-	print("name input done")
-	get_node("intro_scene_anim").play("dialog_fade_in")
-	input_player_name.hide()
-	button_start.show()
+
+
+
+func _on_intro_scene_anim_finished():
+	if get_node("intro_scene_anim").get_current_animation() == "dialog_fadeout_anim":
+		button_accept.hide()
+		get_node("/root/global").player.name = input_player_name.get_text()
+		dialog_box.clear()
+		dialog_box.parse_bbcode("Thank you, " + get_node("/root/global").player.name + " Now let's begin talking about your story shall we?")
+		get_node("intro_scene_anim").play("dialog_fade_in")
+		input_player_name.hide()
+		button_start.show()
+	elif get_node("intro_scene_anim").get_current_animation() == "scene_fade_out_anim":
+		get_node("/root/global").goto_scene("res://travel.scn")

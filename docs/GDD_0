@@ -1,0 +1,145 @@
+============================
+    Escape from R'ylaeh
+  
+  By : Somjade Chunthavorn 
+============================
+index
+
+0.a Basic information
+0.b Backstory
+0.c [Temp] Bullet point features
+
+1.a Gameplay overview
+1.b Player characters 
+1.c Player's Ship
+1.d Inventory
+1.e Map
+
+2.a Encounters overview
+
+
+=======================
+ 0 Gameplay Overview 
+=======================
+
+-----------------------
+0.a Basic information
+-----------------------
+Genre 		 : Action, Adventure
+Target		 : 25-30 Year old male, with retro gaming background.
+Graphics style 	 : 2D Hand-drawn Ink illustration with colors
+Wow Factor 	 : Just imagine Lovecraftian themed Oregon trails.
+Controls	 : 1 handed touch interface including draging, tapping
+Target platform  : PC, Android, iOS, HTML5
+
+
+---------
+0.b Story
+---------
+The group of Archeologist Scientist and Military expert dwelt down to the uncharted abyss in order to uncover the truth of the lost city. 
+But then, the operation wasn't proceed as they've planned. The lost city turns out to be the source of unfathom horror. Crew men start to lost their sanity followed With most of them dead / killing each other.
+
+Player play as  group of survivors whose must heading back to the mainland and survive. By Narrative element, The game will start with Player which already gone insane. Interviewing by the doctor of the even happen back in the Abyss escape.
+
+------------
+0.c Features
+------------
+* Dive into 1920s horrors.
+* Name your friends as crewmates and watch them die.
+* Hours of gameplay!
+* Mobile first Bitch!
+* Get dysentery and X other diseases
+* Submarine upgrade
+* Survive the cultist!
+* Harpooning enemies including fish people, lizard man
+* Run from the Elder God!
+* Scavange the sunken ships for supplies
+* Cook your enemies into food.
+* Every play wasn't the same, Random!
+* unlock new Crews
+
+
+
+
+---------------------
+1.a Gameplay Overview
+---------------------
+Player started in the same submarine as the other 3 members. In the start of escaping a mysterious giant creature from the deep. Levels or board will have a landmarks that player have to reach along the way untill he/she reach the mainland(destination). 
+Player can restock, explore, scavenge or buy resources from landmark. 
+
+----------------------
+1.b Player's Character
+----------------------
+Player can choose portait and name the lead character as him/herself and other 3 crewmen. Basically there's no different for any portrait pic player choosen. Each character will issued with Health bar (100) and also able to recieve 'statuses' eg. illness, bleed, broken leg, panic.
+
+---------------------
+1.c Player's Ship
+---------------------
+Player's party will travel by the submarine that player can also named to his/her liking. 
+
+Hull condition
+--------------   
+The health of the ship. If drained to 0 the Ship will break apart and game ended in sunk ending. Hull can be repair at anytime with "Plating" or repair at the sub-pen in some landmark location.
+
+Engine condition
+----------------
+The main source of ship's power. Engine will degradded every time Ship moving forward or encounter with Accident event involving losing Engine condition.
+Ship can be repair at anytime player stop the journy both between landmarks or landmark itself (Each repair required a spareparts)
+
+Also, Engine brakedown won't result in game over. Player won't able to move in following turn until he/she repair it first.
+
+Speed
+-----
+Ship can advance turns in low-mid-fast speed. Result in different distance gain/turn. How ever the higher speed will cause ship condition to drop very fast, drain more fuel and making more noise attracting more monsters to the ship.
+
+Upgrade slot
+------------
+Ship can took up 4 upgrades in specific hardpoint. Weapon, Plating, Propeller, Engine.
+
+------------------
+Player's resources
+------------------
+Fuel
+----
+needed in order to advance the distance. Player can lose fuel by. Normally , travel. Or wasted on accidents.
+
+Food
+----
+Deplete overtime at the rate depends on number of party members. Ran out of food cause party member to lose health and quicky drawn to insanity.
+
+Alternative design : Each crewmens have his/her own hunger level. if Hunger reach 0 their life will start to drop gradually. As well as Sanity and result in killing other crewmen and feed on their flesh. However, player have a choice to kill one of any crewmen in order to valunteery canibalism when the food stockpile is empty.
+
+Spareparts
+----------
+Required to perform ship's repair.
+
+
+First-aid kits
+--------------
+Give a member huge amount of health back + regain a little sanity
+
+Morphine dosage
+---------------
+Remove panic status regain huge amount of sanity + minor amount of health.
+
+*** Event encounter ***
+Event that player will encounter during sailing ship. Can be categorized in. 
+** Accident **
+The most common event in the whole game. Including resource lost, party member's health lost. 
+
+** Get lucky ** 
+Player will sometime encounter a positive situation during the play. Including gain resource, gain health back, Got a status buff. 
+
+** Narative ** 
+A random dialogue from a party member. 
+
+** Terror encounter **
+An encounter with monster or hostile.
+
+Between landmarks player will have a chance to encounter random events which include
+- small story bulb
+- accident
+- hostile encounter
+- minigames
+- loot found. 
+- small side quest with dialog tree choices gameplay. 

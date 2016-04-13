@@ -1,0 +1,62 @@
+Finished Tasks
+==============
+DONE! idle animation for travelling scene.
+DONE! Have a random generator (Very basic one) working at configurable percentage.
+	+ Study more into even cards draw in 'Arkham Horror'
+        + Dictionary 
+DONE! Out of Fuel Notification * But still not prevent the player's ship from keep advancing
+DONE! Minor animation on background.
+DONE! Background wrapping/scrolling.
+DONE! Switched scene with singletons 
+DONE! Intro scene + player name input mockup.
+DONE! Ditched letter by letter system completely, Now everything is fading in/out nicely 
+DONE! Crew starving when out of food and take damage.
+DONE! Setup Android exporter. Now I'm able to build an APK
+
+++ Have to really think about art style and how broad platform/hardware, how low-end I really wanted to target the devices.
+* Solution A : going low-res make a game in 640*400px use pixel-art, pixelled from drawing style. with limited pallete, maybe a subset of DB32 << I could test out this idea real quick with pixel art mockup.
+* Solution B : Aesthetic first : stick with 1280*800px with comic style presentation. << For now Stick with this one.  
+
+
+What to do next
+===============
+
+- Make a dummy crew die of starvation
+-- Make 'out of food' notification pop up only 1 time whenever food ran out.
+- Loading hub/landmark scene when player's ship reach the destination
+- Make the ship stop when out of fuel + force player to go scavenge.
+- When out of fuel player will continueusly lost food while waiting turns. -And also have a chance of drawing sickness status card.
+
+
+
+
+Assets list
+===========
+- Wrapable scrolling background, maybe in palalax
+	- farest layer (static)
+	- bg 1 move slowly 
+        - bg 2 move accordingly to the player
+        - fg move pass the screen very fast. may use separated object with spawn object script
+
+- New version of ship in the same style as the intro scene 
+- Title screen mockup with
+		+ [Mockup done]Title logo
+	- Illustration for title
+        + [Mockup done]start game button >> introduction
+        + [Mockup done]Load/continue >> to the profile selection
+        + [Mockup done]credits
+        + [Mockup done]Quit game >> Now functional
+	+ Basic fade-in animation applied to the title screen.  
+
+- Rich Text doesn't pasrse and show at all at intro scene. 
+
+
+
+Idea Note
+*********
+- Study more from arkham horror ruleset
+
+- End turn or resting the crew may sometime evoke the weird dream of Cthulhu.
+	Could make asa random event encounter.
+
+- Environment rule set change on every full-moon cycle. : inspired from Arkham Horror.

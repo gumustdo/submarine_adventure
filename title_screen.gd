@@ -6,11 +6,18 @@ extends Node
 # var b="textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	set_process(true)
 
-
+func move_to_pos(new_x, new_y, time):
+	var new_x
+	var new_y
+	var time
+	
+	
+	
+	
+func _process(delta):
+	get_node("Node2D/Navigation2D").move_to(Vector2(0, 0).linear_interpolate(Vector2(5,5), 3))
 
 
 func _on_button_quit_pressed():
