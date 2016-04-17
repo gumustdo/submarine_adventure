@@ -9,6 +9,7 @@ var fuel_consumption = 2
 
 # Player's Resources
 var resource
+var global
 
 # flags
 var ship_state = "sail"
@@ -18,23 +19,27 @@ var food_ran_out = false
 var random_index = null # Blank random number slot for event
 
 
-func _ready():
+func _ready():	
+	global = get_node("/root/global")
 	resource = get_node("/root/global").resource
 	
-	get_node("ui/Panel/crew_1/name").set_text(get_node("/root/global").player.name)
-	
-	#test
-	print("player have " + str(resource.food) + " oz of food left")
 	
 	distance_left = distance
 	
 	self.set_process(true)
 	# Assign values to UI text
-	get_node("ui/Panel/distance_left_title/distance_left_value").set_text(str(distance))
-	get_node("ui/Panel/fuel_title/fuel_left").set_text(str(resource.fuel))
-	get_node("ui/Panel/food_title/food_left").set_text(str(resource.food))
+	if global.player.name == null:
+		global.player.name = "Carmack"
+		get_node("ui/control_panel/crew_1/name").set_text(get_node("/root/global").player.name)
+	else:
+		get_node("ui/control_panel/crew_1/name").set_text(get_node("/root/global").player.name)
+		
 	
-	get_node("ui/Panel/distance_left_title/ProgressBar").set_max(distance)
+	get_node("ui/control_panel/distance_left_title/distance_left_value").set_text(str(distance))
+	get_node("ui/control_panel/fuel_title/fuel_left").set_text(str(resource.fuel))
+	get_node("ui/control_panel/food_title/food_left").set_text(str(resource.food))
+	
+	get_node("ui/control_panel/distance_left_title/ProgressBar").set_max(distance)
 	
 func _process(delta):
 	
@@ -51,24 +56,24 @@ func _process(delta):
 	if get_node("bg_set_1").get_pos().x < -(screen_width):
 		get_node("bg_set_1").set_pos(Vector2(screen_width, 0))
 
-func _travel():
+func travel():
 	print("traveling")
-	get_node("ui/Panel/distance_left_title/ProgressBar").set_value(distance - distance_left)
+	get_node("ui/control_panel/distance_left_title/ProgressBar").set_value(distance - distance_left)
 
-func _ship_stop():
+func ship_stop():
 	get_node("player_container/player_ship/AnimationPlayer").play("stop")
 	ship_state = "stop"
 	
 
-func _out_of_fuel():
+func out_of_fuel():
 	print("You are out of fuel")
 	get_tree().set_pause(true)
 	get_node("random_event/Label").set_text("You are out of fuel")
 	get_node("random_event/RichTextLabel").add_text("With out fuel you and your crew can't go anywhere \nAll you can do is wait or scavange")
 	get_node("random_event").show()
-	self._ship_stop()
+	self.ship_stop()
 	
-func _out_of_food():
+func out_of_food():
 	if food_ran_out:	
 		print("You are out of food")
 		get_node("random_event/Label").set_text("You are out of Food")
@@ -81,12 +86,12 @@ func _out_of_food():
 		pass	
 	
 	# Damage
-	get_node("ui/Panel/crew_1").health -= get_node("ui/Panel/crew_1").starvation_damage
-	print(get_node("ui/Panel/crew_1").health)
+	get_node("ui/control_panel/crew_1").health -= get_node("ui/control_panel/crew_1").starvation_damage
+	print(get_node("ui/control_panel/crew_1").health)
 
 func distance_check():
 	# Distance deduction and displaying result
-	var distance_update = get_node("ui/Panel/distance_left_title/distance_left_value")
+	var distance_update = get_node("ui/control_panel/distance_left_title/distance_left_value")
 	distance_update.set_text(str(distance_left))
 	distance_left -= distance_per_turn
 	
@@ -95,10 +100,10 @@ func distance_check():
 	
 func _on_Timer_timeout():
 	if resource.fuel > 0 :
-		self._travel()
+		self.travel()
 	else:
 		get_node("Timer").stop()
-		self._out_of_fuel()
+		self.out_of_fuel()
 		
 	# Test random event
 	var random_index = randi() % 100
@@ -109,8 +114,8 @@ func _on_Timer_timeout():
 		get_node("random_event").show()
 	
 	distance_check()
-	var fuel_left = get_node("ui/Panel/fuel_title/fuel_left")
-	var food_left = get_node("ui/Panel/food_title/food_left")
+	var fuel_left = get_node("ui/control_panel/fuel_title/fuel_left")
+	var food_left = get_node("ui/control_panel/food_title/food_left")
 	
 	fuel_left.set_text(str(resource.fuel))
 	food_left.set_text(str(resource.food))

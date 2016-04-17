@@ -12,10 +12,7 @@ DONE! Intro scene + player name input mockup.
 DONE! Ditched letter by letter system completely, Now everything is fading in/out nicely 
 DONE! Crew starving when out of food and take damage.
 DONE! Setup Android exporter. Now I'm able to build an APK
-
-++ Have to really think about art style and how broad platform/hardware, how low-end I really wanted to target the devices.
-* Solution A : going low-res make a game in 640*400px use pixel-art, pixelled from drawing style. with limited pallete, maybe a subset of DB32 << I could test out this idea real quick with pixel art mockup.
-* Solution B : Aesthetic first : stick with 1280*800px with comic style presentation. << For now Stick with this one.  
++ Added a debugging feature: defualt player name for testing game.
 
 
 What to do next
