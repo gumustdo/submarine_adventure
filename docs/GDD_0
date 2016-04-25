@@ -111,7 +111,7 @@ Alternative design : Each crewmens have his/her own hunger level. if Hunger reac
 
 Spareparts
 ----------
-Required to perform ship's repair.
+Required in order to perform ship's repair.
 
 
 First-aid kits
@@ -133,8 +133,9 @@ Ship's ammunition, Torpedo will use in larger scale combat, eg. encounter monste
 
 *** Event encounter ***
 Event that player will encounter during sailing ship. Can be categorized in. 
+
 ** Accident **
-The most common event in the whole game. Including resource lost, party member's health lost. 
+The most common event in the whole game. Including resource lost, party member's health lost. Get a diseases. 
 
 ** Get lucky ** 
 Player will sometime encounter a positive situation during the play. Including gain resource, gain health back, Got a status buff. 
@@ -142,8 +143,16 @@ Player will sometime encounter a positive situation during the play. Including g
 ** Narative ** 
 A random dialogue from a party member. 
 
-** Terror encounter **
+** Side Adventure event **
+Will perform in the way of choose your adventure 
+
+** Combat encounter **
 An encounter with monster or hostile.
+ - Escape the monster
+ - Dive carefully across the field of minds and rocks.
+ - Survive monster attack for a perioud of time. 
+ - Battle ship battle
+ - Hostile on board. Figth the enemy on the ship with close range machanic.
 
 Between landmarks player will have a chance to encounter random events which include
 - small story bulb
@@ -157,3 +166,14 @@ Between landmarks player will have a chance to encounter random events which inc
 - Battleship style turnbase game.
 - Fuse it with rogue like movement.
 - Every minigame in Unfathomed will grid-based.
+
+Landmark/Town
+- Player can rest the party member here more safely and recover from illness faster than out in the water.
+- Player can trade items with passerby fish people and seamans
+- Player can buy/sell stuffs with local store
+- Player can learn new ability with skill master or by touching a magic stone.
+- Player can repair ship here
+- Player cna visit the Submaine pen if there's any.
+- Player can take quest or explore the place to gain reward resource.
+
+

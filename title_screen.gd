@@ -1,31 +1,30 @@
 
 extends Node
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
+var menu_select
 
 func _ready():
+	menu_select = "none"
 	set_process(true)
+	self.get_node("StreamPlayer").play()
 
-func move_to_pos(new_x, new_y, time):
-	var new_x
-	var new_y
-	var time
-	
-	
-	
-	
-func _process(delta):
-	get_node("Node2D/Navigation2D").move_to(Vector2(0, 0).linear_interpolate(Vector2(5,5), 3))
+func outtro_animation():
+	self.get_node("title_animation").play_backwards("title_logo_anim")
+	self.get_node("StreamPlayer/music_fader").play("music_fadeout")
 
-
-func _on_button_quit_pressed():
-	# Quit the game
-	get_tree().quit()
-	
-
+func scene_changer(menu_select):
+	if self.get_node("title_animation").get_current_animation() == "title_logo_anim" && menu_select == "start":
+		get_node("/root/global").goto_scene("res://intro.scn")
+	elif self.get_node("title_animation").get_current_animation() == "title_logo_anim" && menu_select == "exit":
+		get_tree().quit()
 
 func _on_button_start_pressed():
-	# Start a new game
-	get_node("/root/global").goto_scene("res://intro.scn")
+	menu_select = "start"
+	outtro_animation()
+
+func _on_button_quit_pressed():
+	menu_select = "exit"
+	outtro_animation()
+
+func _on_title_animation_finished():
+	scene_changer(menu_select)

@@ -12,8 +12,8 @@ var ship = {
 
 # Player's Resources
 var resource = {
-	food = 200,
-	fuel = 10,
+	food = 2000,
+	fuel = 100,
 	spare_part = 50,
 	first_aid = 3,
 	morphine = 2,
